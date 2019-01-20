@@ -13,5 +13,5 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o /app .
 
 FROM scratch
 COPY --from=builder /app ./
-COPY --from=builder /html ./html
+COPY --from=builder $GOPATH/src/github.com/LordBrain/SampleSite/html ./html
 ENTRYPOINT ["./app"]
