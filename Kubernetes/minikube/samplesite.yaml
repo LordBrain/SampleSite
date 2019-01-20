@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: samplesite
+spec:
+  template:
+    metadata:
+      labels:
+        app: samplesite
+    spec:
+      containers:
+        - name: samplesite
+          image: blee1170/samplesite:latest
+          imagePullPolicy: Always
+          ports:
+              - containerPort: 8080
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: samplesite-service
+spec:
+  selector:
+    app: samplesite
+  ports:
+  - name: web
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: NodePort
