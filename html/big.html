@@ -1,0 +1,59 @@
+<doctype html>
+        <html>
+            <head>
+
+                    <link rel="stylesheet" type="text/css" href="/css/big.css">
+                    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+                <script type="text/javascript">
+                    var timerStart = Date.now();
+                </script>
+
+            </head>
+            <body>
+                <p>Sample Website BIG Images</p>
+                <div>
+                    <p id="pageLoad"></p>
+                </div>
+                <div class="row">
+                        <div class="column">
+                          <img src="/images/Airport.jpg" alt="Airport" onclick="myFunction(this);" style="width:100%">
+                        </div>
+                        <div class="column">
+                          <img src="/images/Canada.jpg" alt="Oil Field" onclick="myFunction(this);" style="width:100%">
+                        </div>
+                        <div class="column">
+                          <img src="/images/Mine.jpg" alt="Mine" onclick="myFunction(this);" style="width:100%">
+                        </div>
+                        <div class="column">
+                          <img src="/images/Germany.jpg" alt="Rome" onclick="myFunction(this);" style="width:100%">
+                        </div>
+                      </div>
+                      
+                      <div class="container">
+                            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                            <img id="expandedImg" style="width:100%">
+                            <div id="imgtext"></div>
+                    </div>
+                <script type="text/javascript">
+                     $(document).ready(function() {
+                         console.log("Time until DOMready: ", Date.now()-timerStart);
+                     });
+                     $(window).load(function() {
+                         var element = document.getElementById("pageLoad");
+                         var time = String(Date.now()-timerStart)
+                         var text = "Page Load Time: " + time + "ms"
+                         element.innerHTML=text;
+                         console.log("Time until everything loaded: ", Date.now()-timerStart);
+                     });
+                </script>
+                <script>
+                    function myFunction(imgs) {
+                        var expandImg = document.getElementById("expandedImg");
+                        var imgText = document.getElementById("imgtext");
+                        expandImg.src = imgs.src;
+                        imgText.innerHTML = imgs.alt;
+                        expandImg.parentElement.style.display = "block";
+                    }
+                </script>
+            </body>
+        </html>

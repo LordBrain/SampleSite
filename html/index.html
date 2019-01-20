@@ -1,0 +1,36 @@
+<doctype html>
+    <html>
+        <head>
+                <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+            <script type="text/javascript">
+                var timerStart = Date.now();
+            </script>
+        </head>
+        <body>
+            <p>Sample Website</p>
+            <div>
+                <p id="pageLoad"></p>
+            </div>
+            <div>
+                <p>Picture of the world:</p>
+                <img src="/images/LARGE_elevation.jpg" height="400" width="800" />
+                <p>14.5mb</p>
+            </div>
+            <div>
+                <p>Bongo Cat Boom:</p>
+                <img src="/images/Bongo-cat-boom.gif" />
+            </div>
+            <script type="text/javascript">
+                 $(document).ready(function() {
+                     console.log("Time until DOMready: ", Date.now()-timerStart);
+                 });
+                 $(window).load(function() {
+                     var element = document.getElementById("pageLoad");
+                     var time = String(Date.now()-timerStart)
+                     var text = "Page Load Time: " + time + "ms"
+                     element.innerHTML=text;
+                     console.log("Time until everything loaded: ", Date.now()-timerStart);
+                 });
+            </script>
+        </body>
+    </html>
