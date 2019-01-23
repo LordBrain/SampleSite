@@ -11,7 +11,7 @@ RUN dep ensure --vendor-only
 COPY . ./
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o /app .
 
-FROM scratch
+FROM alpine:latest
 COPY --from=builder /app ./
-COPY --from=builder $GOPATH/src/github.com/LordBrain/SampleSite/html ./html
+COPY --from=builder /go/src/github.com/LordBrain/SampleSite/html /html
 ENTRYPOINT ["./app"]
